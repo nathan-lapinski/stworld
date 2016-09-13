@@ -43,7 +43,7 @@ passport.use(new FBStrategy({
 // user's behalf, along with the user's profile.  The function must invoke `cb`
 // with a user object, which will be set at `req.user` in route handlers after
 // authentication.
-passport.use(new Strategy({
+passport.use(new TWStrategy({
     consumerKey: process.env.TW_CONSUMER_KEY,
     consumerSecret: process.env.TW_CONSUMER_SECRET,
     callbackURL: 'https://stworld.herokuapp.com/login/twitter/return'
