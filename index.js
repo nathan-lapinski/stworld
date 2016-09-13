@@ -53,8 +53,15 @@ passport.deserializeUser(function(obj, cb) {
 });
 
 
+// Configure view engine to render EJS templates.
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
+
+
 // for serving static files
 app.use(express.static('public'));
+app.use(require('morgan')('combined'));
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
