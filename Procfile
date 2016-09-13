@@ -1,1 +1,1 @@
-web: node index.js
+web: CLIENT_ID=881218235344016 CLIENT_SECRET=4393a585dc96a156c4dd31058a124892 node index.js

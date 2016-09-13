@@ -4,6 +4,8 @@
   <link rel='stylesheet' href='css/style.css'/>
   <!-- load the fb sdk -->
   <script src='js/fb_login.js'></script>
+  <!-- load angular, in case we use node -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 </head>
 <body>
 
@@ -40,5 +42,36 @@
 
 	</div>
 
+	<!-- node test -->
+	<div id="node-test" ng-app="testPassport">
+		<div ng-controller="fbLoginCtrl">
+			<button ng-click="fbLogin()">test passport fb login</button>
+		</div>
+	</div>
+	<script>
+	// angular test script
+	var testPassport = angular.module('testPassport',[]);
+	testPassport.controller('fbLoginCtrl', function($scope, $http){
+		$scope.fbLogin = function(){
+			console.log('click!');
+			// send an http request to the fb login endpoint
+                $http({
+                    method: 'GET',
+                    url: 'login/facebook',
+                    data: {},
+                    headers: {'Content-Type': 'application/json'}
+                }).then( function(response) {
+                    if(response.error){
+                        console.log('Errors in HTTP POST request');
+                    } else {
+                        console.log('Successfully hit endpoint');
+                    }
+                }, function(response){
+                    console.log('error', response);
+                    $scope.response = response;
+                });
+		}
+	});
+	</script>
 </body>
 </html>
