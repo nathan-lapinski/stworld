@@ -11,6 +11,8 @@ var bodyParser = require('body-parser');    // used for parsing incoming HTTP re
 var passport   = require('passport');       // used for authentication
 var FBStrategy = require('passport-facebook').Strategy; // used for Facebook login
 var TWStrategy = require('passport-twitter').Strategy; // used for Twitter login
+var GoogStrategy = require('passport-google-plus').Strategy; // used for Google+
+var LineStrategy = require('passport-line').Strategy; // used for line
 var cors       = require('cors');           // enables CORS requests
 
 
@@ -56,6 +58,41 @@ passport.use(new TWStrategy({
     // providers.
     return cb(null, profile);
   }));
+
+// TODO: Set up Line Channel ID and Channel secret
+// Configure the Google Plus strategy for use by Passport.
+//
+
+/*passport.use(new GoogStrategy({
+    clientId: process.env.GOOG_CLIENT_ID,
+    clientSecret: process.env.GOOG_CLIENT_SECRET,
+    callbackURL: 'https://stworld.herokuapp.com/login/twitter/return'
+  },
+  function(token, tokenSecret, profile, cb) {
+    // In this example, the user's Twitter profile is supplied as the user
+    // record.  In a production-quality application, the Twitter profile should
+    // be associated with a user record in the application's database, which
+    // allows for account linking and authentication with other identity
+    // providers.
+    return cb(null, profile);
+  }));*/
+
+// TODO: Set up Line Channel ID and Channel secret
+// Configure the Line strategy for use by Passport.
+//
+/*passport.use(new LineStrategy({
+    channelID: process.env.LINE_CHANNEL_ID,
+    channelSecret: process.env.LINE_CHANNEL_SECRET,
+    callbackURL: 'https://stworld.herokuapp.com/login/line/return'
+  },
+  function(token, tokenSecret, profile, cb) {
+    // In this example, the user's Line profile is supplied as the user
+    // record.  In a production-quality application, the Twitter profile should
+    // be associated with a user record in the application's database, which
+    // allows for account linking and authentication with other identity
+    // providers.
+    return cb(null, profile);
+  }));*/
 
 
 // Configure Passport authenticated session persistence.

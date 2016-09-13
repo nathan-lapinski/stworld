@@ -2,24 +2,13 @@
 <html>
 <head>
   <link rel='stylesheet' href='css/style.css'/>
-  <!-- load the fb sdk 
-  <script src='js/fb_login.js'></script> -->
-  <!-- load angular, in case we use node -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 </head>
 <body>
 
 	<div class="social-wrap a">
    
-		<!--
-		  Below we include the Login Button social plugin. This button uses
-		  the JavaScript SDK to present a graphical Login button that triggers
-		  the FB.login() function when clicked.
-		-->
-
-		<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-		</fb:login-button>
-
+		
+		<a href="/login_fb"><button id="facebook">Sign in with Facebook</button></a>
 		<!-- shows current fb status. can be removed -->
 		<div id="status">
 		</div>
@@ -29,7 +18,7 @@
 		</br>
 
 		<!-- twitter -->
-	    <button id="twitter">Sign in with Twitter</button>
+	    <a href="/login_tw"><button id="twitter">Sign in with Twitter</button></a>
 	    </br>
 		<!-- line -->
 		<button id="line">Sign in with Line</button>
@@ -42,36 +31,5 @@
 
 	</div>
 
-	<!-- node test -->
-	<div id="node-test" ng-app="testPassport">
-		<div ng-controller="fbLoginCtrl">
-			<button ng-click="fbLogin()">test passport fb login</button>
-		</div>
-	</div>
-	<script>
-	// angular test script
-	var testPassport = angular.module('testPassport',[]);
-	testPassport.controller('fbLoginCtrl', function($scope, $http){
-		$scope.fbLogin = function(){
-			console.log('click!');
-			// send an http request to the fb login endpoint
-                $http({
-                    method: 'GET',
-                    url: 'login/facebook',
-                    data: {},
-                    headers: {'Content-Type': 'application/json'}
-                }).then( function(response) {
-                    if(response.error){
-                        console.log('Errors in HTTP POST request');
-                    } else {
-                        console.log('Successfully hit endpoint');
-                    }
-                }, function(response){
-                    console.log('error', response);
-                    $scope.response = response;
-                });
-		}
-	});
-	</script>
 </body>
 </html>
