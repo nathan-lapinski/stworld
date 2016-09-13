@@ -7,39 +7,38 @@
 </head>
 <body>
 
-stworld test harness
 	<div class="social-wrap a">
    
-	<!--
-	  Below we include the Login Button social plugin. This button uses
-	  the JavaScript SDK to present a graphical Login button that triggers
-	  the FB.login() function when clicked.
-	-->
+		<!--
+		  Below we include the Login Button social plugin. This button uses
+		  the JavaScript SDK to present a graphical Login button that triggers
+		  the FB.login() function when clicked.
+		-->
 
-	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-	</fb:login-button>
+		<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+		</fb:login-button>
 
-	<!-- shows current fb status. can be removed -->
-	<div id="status">
+		<!-- shows current fb status. can be removed -->
+		<div id="status">
+		</div>
+
+		</br>
+		</br>
+		</br>
+
+		<!-- twitter -->
+	    <button id="twitter">Sign in with Twitter</button>
+	    </br>
+		<!-- line -->
+		<button id="line">Sign in with Line</button>
+		</br>
+		<!-- google+ -->
+		<button id="googleplus">Sign in with Google</button>
+		</br>
+		<!-- local -->
+		<button id="local">Sign in with username/password</button>
+
 	</div>
 
-	<!-- twitter -->
-    <button id="twitter">Sign in with Twitter</button>
-	<!-- line -->
-	<button id="line">Sign in with Line</button>
-	<!-- google+ -->
-	<button id="googleplus">Sign in with Google</button>
-	<!-- local -->
-	<button id="local">Sign in with username/password</button>
-
-	</div>
-
-	<!-- test sdk -->
-	<div
-	  class="fb-like"
-	  data-share="true"
-	  data-width="450"
-	  data-show-faces="true">
-	</div>
 </body>
 </html>
