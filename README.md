@@ -1,24 +1,26 @@
-# stworld
-Test node app implementing SNS login.
+# node app implementing SNS login.
+  A simple test page using node, express, and passport for sns login.
 
-clone, and then run
+## test page
+https://stworld.herokuapp.com/
 
-npm install
+## setup
+  1. clone repo
+  2. npm install
+  3. node server.js (you will need a .env file with the sns app information)
 
-to download and install all dependencies.
+## Project Status
 
-node server.js
+### Facebook Login 
+Implemented and testing using web sdk and node/passport.
 
-to start the test server.
+go to  https://stworld.herokuapp.com/profile
 
-Project Status:
+authorize the app
 
-Facebook Login: Implemented and testing using web sdk. Currently not writing credentials to any datastore.
+go back to https://stworld.herokuapp.com/ to see it work.
 
-Twitter Login: In-progress.
-
-Google+ Login:
-
-Line Login: 
-
-Local Login:
+### Twitter Login: In-progress.
+### Google+ Login:
+### Line Login:
+### Local Login:
