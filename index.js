@@ -4,6 +4,7 @@
 // =============================================================================
 
 // call the packages we need
+require('dotenv').load();
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');    // used for parsing incoming HTTP requests
@@ -21,8 +22,8 @@ var cors       = require('cors');           // enables CORS requests
 // with a user object, which will be set at `req.user` in route handlers after
 // authentication.
 passport.use(new FBStrategy({
-    clientID: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
+    clientID: process.env.FB_CLIENT_ID,
+    clientSecret: process.env.FB_CLIENT_SECRET,
     callbackURL: 'https://stworld.herokuapp.com/login/facebook/return'
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -68,7 +69,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors())
 app.use(require('cookie-parser')());
-// ??
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 
 // Initialize Passport and restore authentication state, if any, from the
