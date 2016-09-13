@@ -62,8 +62,6 @@
     statusChangeCallback(response);
   });
 
-  };
-
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
@@ -88,7 +86,7 @@ stworld test harness
 	<div class="social-wrap a">
    
 	<!-- facebook -->
-	<!--<button id="facebook">Sign in with Facebook</button>-->
+	<button scope="public_profile,email" onlogin="checkLoginState();" id="facebook">Sign in with Facebook</button>
 	<!--
 	  Below we include the Login Button social plugin. This button uses
 	  the JavaScript SDK to present a graphical Login button that triggers
@@ -100,7 +98,7 @@ stworld test harness
 
 	<div id="status">
 	</div>
-	
+
 	<!-- twitter -->
     <button id="twitter">Sign in with Twitter</button>
 	<!-- line -->
