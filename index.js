@@ -23,8 +23,7 @@ var cors       = require('cors');           // enables CORS requests
 passport.use(new FBStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    //callbackURL: 'https://stworld.herokuapp.com/index.html'
-    callbackURL: 'http://localhost:8080/login/facebook/return'
+    callbackURL: 'https://stworld.herokuapp.com/login/facebook/return'
   },
   function(accessToken, refreshToken, profile, cb) {
     // In this example, the user's Facebook profile is supplied as the user
