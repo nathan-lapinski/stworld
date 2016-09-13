@@ -9,6 +9,7 @@ var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');    // used for parsing incoming HTTP requests
 var passport   = require('passport');       // used for authentication
 var FBStrategy   = require('passport-facebook').Strategy; // used for Facebook login
+var cors       = require('cors');           // enables CORS requests
 
 
 
@@ -58,6 +59,7 @@ app.use(express.static('public'));
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 app.use(require('cookie-parser')());
 // ??
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
