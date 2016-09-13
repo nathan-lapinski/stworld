@@ -9,7 +9,8 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');    // used for parsing incoming HTTP requests
 var passport   = require('passport');       // used for authentication
-var FBStrategy   = require('passport-facebook').Strategy; // used for Facebook login
+var FBStrategy = require('passport-facebook').Strategy; // used for Facebook login
+var TWStrategy = require('passport-twitter').Strategy; // used for Twitter login
 var cors       = require('cors');           // enables CORS requests
 
 
@@ -29,6 +30,27 @@ passport.use(new FBStrategy({
   function(accessToken, refreshToken, profile, cb) {
     // In this example, the user's Facebook profile is supplied as the user
     // record.  In a production-quality application, the Facebook profile should
+    // be associated with a user record in the application's database, which
+    // allows for account linking and authentication with other identity
+    // providers.
+    return cb(null, profile);
+  }));
+
+// Configure the Twitter strategy for use by Passport.
+//
+// OAuth 1.0-based strategies require a `verify` function which receives the
+// credentials (`token` and `tokenSecret`) for accessing the Twitter API on the
+// user's behalf, along with the user's profile.  The function must invoke `cb`
+// with a user object, which will be set at `req.user` in route handlers after
+// authentication.
+passport.use(new Strategy({
+    consumerKey: process.env.TW_CONSUMER_KEY,
+    consumerSecret: process.env.TW_CONSUMER_SECRET,
+    callbackURL: 'https://stworld.herokuapp.com/login/twitter/return'
+  },
+  function(token, tokenSecret, profile, cb) {
+    // In this example, the user's Twitter profile is supplied as the user
+    // record.  In a production-quality application, the Twitter profile should
     // be associated with a user record in the application's database, which
     // allows for account linking and authentication with other identity
     // providers.
@@ -89,11 +111,14 @@ router.get('/', function(req, res) {
 
 // more routes for our API will happen here
 
-// add facebook routes here
+// FACEBOOK TEST ROUTES
+//
+//
+//
 
 app.get('/login',
   function(req, res){
-    res.render('login');
+    res.render('fb_login');
   });
 
 app.get('/login/facebook',
@@ -108,7 +133,28 @@ app.get('/login/facebook/return',
 app.get('/profile',
   require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
-    res.render('profile', { user: req.user });
+    res.render('fb_profile', { user: req.user });
+  });
+
+// TWITTER TEST ROUTES
+app.get('/login',
+  function(req, res){
+    res.render('tw_login');
+  });
+
+app.get('/login/twitter',
+  passport.authenticate('twitter'));
+
+app.get('/login/twitter/return', 
+  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+app.get('/profile',
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    res.render('tw_profile', { user: req.user });
   });
 
 // REGISTER OUR ROUTES -------------------------------
