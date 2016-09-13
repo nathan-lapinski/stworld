@@ -59,7 +59,7 @@ app.use(express.static('public'));
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors())
 app.use(require('cookie-parser')());
 // ??
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
