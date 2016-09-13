@@ -11,16 +11,23 @@ https://stworld.herokuapp.com/
 
 ## Project Status
 
-### Facebook Login 
+### Facebook Login: Finished
 Implemented and testing using web sdk and node/passport.
 
-go to  https://stworld.herokuapp.com/profile
+go to  https://stworld.herokuapp.com/profile_fb
 
 authorize the app
 
-go back to https://stworld.herokuapp.com/ to see it work.
+go back to https://stworld.herokuapp.com/profile_fb to see it work.
 
-### Twitter Login: In-progress.
+### Twitter Login: Finished
+Implemented and testing using web sdk and node/passport.
+
+go to  https://stworld.herokuapp.com/profile_tw
+
+authorize the app
+
+go back to https://stworld.herokuapp.com/profile_tw to see it work.
 ### Google+ Login:
 ### Line Login:
 ### Local Login:
