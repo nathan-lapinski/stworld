@@ -80,7 +80,7 @@ passport.use(new TWStrategy({
 // TODO: Set up Line Channel ID and Channel secret
 // Configure the Line strategy for use by Passport.
 //
-/*passport.use(new LineStrategy({
+passport.use(new LineStrategy({
     channelID: process.env.LINE_CHANNEL_ID,
     channelSecret: process.env.LINE_CHANNEL_SECRET,
     callbackURL: 'https://stworld.herokuapp.com/login/line/return'
@@ -92,7 +92,7 @@ passport.use(new TWStrategy({
     // allows for account linking and authentication with other identity
     // providers.
     return cb(null, profile);
-  }));*/
+  }));
 
 
 // Configure Passport authenticated session persistence.
@@ -174,6 +174,9 @@ app.get('/profile_fb',
   });
 
 // TWITTER TEST ROUTES
+//
+//
+//
 app.get('/login_tw',
   function(req, res){
     res.render('tw_login');
@@ -192,6 +195,30 @@ app.get('/profile_tw',
   require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
     res.render('tw_profile', { user: req.user });
+  });
+
+// LINE TEST ROUTES
+//
+//
+//
+app.get('/login_line',
+  function(req, res){
+    res.render('line_login');
+  });
+
+app.get('/login/line',
+  passport.authenticate('line'));
+
+app.get('/login/line/return', 
+  passport.authenticate('line', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+app.get('/profile_line',
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    res.render('line_profile', { user: req.user });
   });
 
 // REGISTER OUR ROUTES -------------------------------
