@@ -83,7 +83,7 @@ passport.use(new TWStrategy({
 passport.use(new LineStrategy({
     channelID: process.env.LINE_CHANNEL_ID,
     channelSecret: process.env.LINE_CHANNEL_SECRET,
-    callbackURL: 'https://stworld.herokuapp.com/login/line/return'
+    callbackURL: 'https://stworld.herokuapp.com/index.html'
   },
   function(token, tokenSecret, profile, cb) {
     // In this example, the user's Line profile is supplied as the user
