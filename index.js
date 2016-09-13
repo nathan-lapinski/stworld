@@ -116,7 +116,7 @@ router.get('/', function(req, res) {
 //
 //
 
-app.get('/login',
+app.get('/login_fb',
   function(req, res){
     res.render('fb_login');
   });
@@ -130,14 +130,14 @@ app.get('/login/facebook/return',
     res.redirect('/');
   });
 
-app.get('/profile',
+app.get('/profile_fb',
   require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
     res.render('fb_profile', { user: req.user });
   });
 
 // TWITTER TEST ROUTES
-app.get('/login',
+app.get('/login_tw',
   function(req, res){
     res.render('tw_login');
   });
@@ -151,7 +151,7 @@ app.get('/login/twitter/return',
     res.redirect('/');
   });
 
-app.get('/profile',
+app.get('/profile_tw',
   require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
     res.render('tw_profile', { user: req.user });
