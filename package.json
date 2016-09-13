@@ -1,0 +1,23 @@
+{
+  "name": "stworld",
+  "version": "1.0.0",
+  "description": "implements sns login test page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathan-lapinski/stworld.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathan-lapinski/stworld/issues"
+  },
+  "homepage": "https://github.com/nathan-lapinski/stworld#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}
