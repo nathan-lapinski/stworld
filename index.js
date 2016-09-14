@@ -231,10 +231,10 @@ app.get('/login_google',
   });
 
 app.get('/login/google',
-  passport.authenticate('google',{ scope: ['profile', 'email'],failureRedirect: '/login' }));
+  passport.authenticate('google',{ scope: ['profile', 'email'],callbackURL: 'https://stworld.herokuapp.com/index.html' }));
 
 app.get('/login/google/return', 
-  passport.authenticate('google', { scope: ['profile', 'email'],failureRedirect: '/login' }),
+  passport.authenticate('google', { scope: ['profile', 'email'], callbackURL: 'https://stworld.herokuapp.com/index.html'  }),
   function(req, res) {
     res.redirect('/');
   });
