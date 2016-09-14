@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');    // used for parsing incoming HTTP re
 var passport   = require('passport');       // used for authentication
 var FBStrategy = require('passport-facebook').Strategy; // used for Facebook login
 var TWStrategy = require('passport-twitter').Strategy; // used for Twitter login
-var GoogStrategy = require('passport-google-plus').Strategy; // used for Google+
+var GoogStrategy = require('passport-google-plus'); // used for Google+
 var LineStrategy = require('passport-line').Strategy; // used for line
 var cors       = require('cors');           // enables CORS requests
 
