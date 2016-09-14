@@ -64,7 +64,7 @@ passport.use(new TWStrategy({
 //
 
 passport.use(new GoogStrategy({
-    clientId: process.env.GOOG_CLIENT_ID,
+    clientID: process.env.GOOG_CLIENT_ID,
     clientSecret: process.env.GOOG_CLIENT_SECRET,
     callbackURL: 'https://stworld.herokuapp.com/login/google/return'
   },
