@@ -207,10 +207,10 @@ app.get('/login_line',
   });
 
 app.get('/login/line',
-  passport.authenticate('line'));
+  passport.authenticate('line', {callbackURL: 'https://stworld.herokuapp.com/index.html'}));
 
 app.get('/login/line/return', 
-  passport.authenticate('line', { failureRedirect: '/login' }),
+  passport.authenticate('line', { callbackURL: 'https://stworld.herokuapp.com/index.html' }),
   function(req, res) {
     res.redirect('/');
   });
