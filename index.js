@@ -231,10 +231,10 @@ app.get('/login_google',
   });
 
 app.get('/login/google',
-  passport.authenticate('google'));
+  passport.authenticate('google',{ scope: ['profile', 'email'],failureRedirect: '/login' }));
 
 app.get('/login/google/return', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
+  passport.authenticate('google', { scope: ['profile', 'email'],failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
   });
