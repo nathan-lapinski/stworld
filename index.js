@@ -63,7 +63,7 @@ passport.use(new TWStrategy({
 // Configure the Google Plus strategy for use by Passport.
 //
 
-/*passport.use(new GoogStrategy({
+passport.use(new GoogStrategy({
     clientId: process.env.GOOG_CLIENT_ID,
     clientSecret: process.env.GOOG_CLIENT_SECRET,
     callbackURL: 'https://stworld.herokuapp.com/login/twitter/return'
@@ -75,7 +75,7 @@ passport.use(new TWStrategy({
     // allows for account linking and authentication with other identity
     // providers.
     return cb(null, profile);
-  }));*/
+  }));
 
 // TODO: Set up Line Channel ID and Channel secret
 // Configure the Line strategy for use by Passport.
@@ -219,6 +219,30 @@ app.get('/profile_line',
   require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
     res.render('line_profile', { user: req.user });
+  });
+
+// GOOGLE PLUS TEST ROUTES
+//
+//
+//
+app.get('/login_google',
+  function(req, res){
+    res.render('goog_login');
+  });
+
+app.get('/login/google',
+  passport.authenticate('line'));
+
+app.get('/login/google/return', 
+  passport.authenticate('google-plus', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+app.get('/profile_google',
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    res.render('goog_profile', { user: req.user });
   });
 
 // REGISTER OUR ROUTES -------------------------------
