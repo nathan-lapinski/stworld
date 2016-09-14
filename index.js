@@ -66,7 +66,7 @@ passport.use(new TWStrategy({
 passport.use(new GoogStrategy({
     clientId: process.env.GOOG_CLIENT_ID,
     clientSecret: process.env.GOOG_CLIENT_SECRET,
-    callbackURL: 'https://stworld.herokuapp.com/login/twitter/return'
+    callbackURL: 'https://stworld.herokuapp.com/login/google/return'
   },
   function(token, tokenSecret, profile, cb) {
     // In this example, the user's Twitter profile is supplied as the user
@@ -231,7 +231,7 @@ app.get('/login_google',
   });
 
 app.get('/login/google',
-  passport.authenticate('line'));
+  passport.authenticate('google-plus'));
 
 app.get('/login/google/return', 
   passport.authenticate('google-plus', { failureRedirect: '/login' }),
