@@ -231,7 +231,7 @@ app.get('/login_google',
   });
 
 app.get('/login/google',
-  passport.authenticate('google-plus'));
+  passport.authenticate('google'));
 
 app.get('/login/google/return', 
   passport.authenticate('google-plus', { failureRedirect: '/login' }),
