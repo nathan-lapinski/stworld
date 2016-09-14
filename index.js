@@ -66,7 +66,7 @@ passport.use(new TWStrategy({
 passport.use(new GoogStrategy({
     clientID: process.env.GOOG_CLIENT_ID,
     clientSecret: process.env.GOOG_CLIENT_SECRET,
-    callbackURL: 'https://stworld.herokuapp.com/login/google/return'
+    callbackURL: 'https://stworld.herokuapp.com/index.html'
   },
   function(token, tokenSecret, profile, cb) {
     // In this example, the user's Twitter profile is supplied as the user
